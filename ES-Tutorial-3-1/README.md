@@ -6,18 +6,16 @@ ElasticSearch 세 번째-1 튜토리얼을 기술합니다.
 
 ## Product 별 버전 상세
 ```
-Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
+Product Version. 6.7.2(2019/05/15 기준 Latest Ver.)
 ```
-* [Elasticsearch](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.0.rpm)
-* [Kibana](https://artifacts.elastic.co/downloads/kibana/kibana-6.6.0-x86_64.rpm)
+* [Elasticsearch](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.2.rpm)
+* [Kibana](https://artifacts.elastic.co/downloads/kibana/kibana-6.7.2-x86_64.rpm)
 
 최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads) 에서 다운로드 가능합니다.
 
 ## ElasticSearch Product 설치
 
 이 튜토리얼에서는 rpm 파일을 이용하여 실습합니다.
-
-https://github.com/benjamin-btn/ES-Tutorial-2
 
 Master 2~3번 장비에서 실습합니다.
 
@@ -140,7 +138,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
   "cluster_name" : "mytuto-es",
   "cluster_uuid" : "LTfRfk3KRLS31kQDROVu9A",
   "version" : {
-    "number" : "6.6.0",
+    "number" : "6.7.2",
     "build_flavor" : "default",
     "build_type" : "rpm",
     "build_hash" : "a9861f4",
