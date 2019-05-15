@@ -22,9 +22,9 @@ Data Node 1~3번 장비에서 실습합니다.
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial-3-2.git
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial.git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-3-2
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial/ES-Tutorial-3-2
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-2]$ ./tuto3-2
 ##################### Menu ##############

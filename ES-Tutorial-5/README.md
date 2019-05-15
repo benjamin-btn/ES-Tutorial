@@ -24,9 +24,9 @@ Elasticsearch 가 실행중인 아무 노드에서 실습합니다.
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial-5.git
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial.git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-5
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial/ES-Tutorial-5
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-5]$ ./tuto5
 ##################### Menu ##############
