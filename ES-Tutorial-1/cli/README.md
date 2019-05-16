@@ -27,9 +27,9 @@ type=rpm-md
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install wget
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.0.rpm
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.2.rpm
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo rpm -ivh ./elasticsearch-6.6.0.rpm
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo rpm -ivh ./elasticsearch-6.7.2.rpm
 ```
 
 ## zip, tar Download 하여 설치하기 
@@ -38,16 +38,16 @@ type=rpm-md
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install unzip
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.0.zip
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.2.zip
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ unzip elasticsearch-6.6.0.zip
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ unzip elasticsearch-6.7.2.zip
 ```
 
 * tar.gz
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.0.tar.gz
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.2.tar.gz
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ tar -xzf elasticsearch-6.6.0.tar.gz
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ tar -xzf elasticsearch-6.7.2.tar.gz
 ```
 
 ## Elasticsearch 실행하기 
@@ -64,9 +64,9 @@ type=rpm-md
 
 * Source Install
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elasticsearch-6.6.0
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elasticsearch-6.7.2
 
-[ec2-user@ip-xxx-xxx-xxx-xxx elasticsearch-6.6.0]$ bin/elasticsearch -d
+[ec2-user@ip-xxx-xxx-xxx-xxx elasticsearch-6.7.2]$ bin/elasticsearch -d
 ```
 
 ### Smoke Test 
@@ -79,7 +79,7 @@ type=rpm-md
   "cluster_name" : "mytuto-es",
   "cluster_uuid" : "52XfKjycSLCSwXqT_YPMXA",
   "version" : {
-    "number" : "6.6.0",
+    "number" : "6.7.2",
     "build_flavor" : "default",
     "build_type" : "rpm",
     "build_hash" : "a9861f4",
@@ -102,7 +102,7 @@ Smoke Test 가 진행되지 않을 때에는 elasticsearch.yml 파일에 기본�
 
 YUM, RPM 을 통한 설치는 path.logs: /var/log/elasticsearch 로, Source 설치는 {install path}/logs 로 설정되어 cluster.name 이 적용된 파일을 만들어 로깅됩니다.
 
-위의 경우에는 /var/log/elasticsearch/{cluster.name}.log, ~/elasticsearch-6.6.0/logs/{cluster.name}.log 에서 확인할 수 있습니다.
+위의 경우에는 /var/log/elasticsearch/{cluster.name}.log, ~/elasticsearch-6.7.2/logs/{cluster.name}.log 에서 확인할 수 있습니다.
 
 * YUM, RPM 
 ```bash
@@ -111,7 +111,7 @@ YUM, RPM 을 통한 설치는 path.logs: /var/log/elasticsearch 로, Source 설�
 
 * Source
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi ./elasticsearch-6.6.0/logs/{cluster.name}.log
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi ./elasticsearch-6.7.2/logs/{cluster.name}.log
 ```
 
 ## Kibana Dev Tools 활용하기 
