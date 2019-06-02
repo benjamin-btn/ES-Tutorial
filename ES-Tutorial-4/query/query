@@ -1,11 +1,22 @@
 ## Rolling Restart 
+# Shard allocation delay time
+PUT _all/_settings
+{
+  "settings": {
+    "index.unassigned.node_left.delayed_timeout": "10s"
+  }
+}
+
 # Routing Off
 PUT _cluster/settings
 {
     "transient" : {
-        "cluster.routing.allocation.enable" : “new_primaries”
+        "cluster.routing.allocation.enable" : "new_primaries"
     }
 }
+
+# Buffer Memory Flush
+POST _flush/synced
 
 # [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo systemctl stop elasticsearch
 # [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo systemctl start elasticsearch
@@ -78,6 +89,16 @@ PUT twitter/_settings
 
 GET twitter/_settings
 
+# set all of index
+PUT _all/_settings
+{
+    "index" : {
+        "refresh_interval" : "2s"
+    }
+}
+
+GET twitter/_settings
+
 # Routing Allocation
 PUT twitter/_settings
 {
@@ -95,10 +116,15 @@ PUT twitter/_settings
 }
 
 # Index Dynamic Mapping 
-PUT data/_doc/1 
+PUT intdata/_doc/1 
 { "count": 5 }
 
-GET data
+GET intdata/_mapping/_doc
+
+PUT strdata/_doc/1 
+{ "stringdata": "strdata" }
+
+GET strdata/_mapping/_doc
 
 # Index Template 
 PUT _template/mytemplate
@@ -125,13 +151,13 @@ PUT _template/mytemplate
 
 PUT test/_settings
 {
-        "index.routing.allocation.require.box_type" : "warm"
+    "index.routing.allocation.require.box_type" : "warm"
 }
 
 ## Cluster API
 # transient, persistent 설정해보기 
 
-PUT /_cluster/settings
+PUT _cluster/settings
 {
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 1
@@ -141,14 +167,23 @@ PUT /_cluster/settings
     }
 }
 
+# 현재 클러스터 세팅 확인하기
+
+GET _cluster/settings
+
 # _cluster API 로 클러스터 라우팅 할당 모드를 변경 
 
 PUT _cluster/settings
 {
+    "persistent" : {
+        "discovery.zen.minimum_master_nodes" : null
+    },
     "transient" : {
-        "cluster.routing.allocation.enable" : "none"
+        "cluster.routing.allocation.enable" : null
     }
 }
+
+GET _cluster/settings
 
 # _cluster API 로 운영중인 특정 노드의 샤드 제외 
 
@@ -157,19 +192,6 @@ PUT _cluster/settings
     "transient" : {
         "cluster.routing.allocation.exclude._ip" : "1.1.1.1, 2.2.2.2, 3.3.3.*"
     }
-}
-
-# POST _cluster/reroute 를 이용한 unassigned 샤드 강제 분배 
-
-POST _cluster/reroute
-{
-    "commands" : [ {
-        "allocate_replica" : {
-             "index" : "twitter",
-             "shard" : 0,
-             "node" : "ryIblhS"
-       }
-    } ]
 }
 
 # POST _cluster/reroute 를 이용한 샤드 할당에 실패한 샤드 강제 분배 
