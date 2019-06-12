@@ -70,21 +70,24 @@ PUT twitter/_settings
     "index.blocks.read_only_allow_delete": null
 }
 
+# region 별로 샤드 분배
+cluster.routing.allocation.awareness.attributes # master node elasticsearch.yml 에 설정
+
+node.attr.rack_id: a_region # data node a_region 군 elasticsearch.yml 에 설정
+
+node.attr.rack_id: b_region # master node b_region 군 elasticsearch.yml 에 설정
+
 ## Dynamic Index Setting 
 # Number Of Replicas
 PUT twitter/_settings
 {
-    "index" : {
-        "number_of_replicas" : 2
-    }
+    "index.number_of_replicas" : 2
 }
 
 # Refresh Interval
 PUT twitter/_settings
 {
-    "index" : {
-        "refresh_interval" : "2s"
-    }
+    "index.refresh_interval" : "2s"
 }
 
 GET twitter/_settings
@@ -92,9 +95,7 @@ GET twitter/_settings
 # set all of index
 PUT _all/_settings
 {
-    "index" : {
-        "refresh_interval" : "2s"
-    }
+    "index.refresh_interval" : "2s"
 }
 
 GET twitter/_settings
@@ -102,17 +103,13 @@ GET twitter/_settings
 # Routing Allocation
 PUT twitter/_settings
 {
-    "index" : {
-        "routing.allocation.enable" : null
-    }
+    "index.routing.allocation.enable" : null
 }
 
 # Routing Rebalance
 PUT twitter/_settings
 {
-    "index" : {
-        "routing.rebalance.enable" : null
-    }
+    "index.routing.rebalance.enable" : null
 }
 
 # Index Dynamic Mapping 
@@ -132,7 +129,7 @@ PUT _template/mytemplate
     "index_patterns": ["te*", "bar*"],
     "order" : 0,
     "settings": {
-        "number_of_shards": 1
+        "index.number_of_shards": 1
     }
 }
 
@@ -144,7 +141,7 @@ PUT _template/mytemplate
     "index_patterns": ["*"],
     "order" : 0,
     "settings": {
-        "number_of_shards": 1,
+        "index.number_of_shards": 1,
         "index.routing.allocation.require.box_type" : "hot"
     }
 }
