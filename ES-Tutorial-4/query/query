@@ -78,6 +78,11 @@ node.attr.rack_id: a_region # data node a_region 군 elasticsearch.yml 에 설�
 node.attr.rack_id: b_region # master node b_region 군 elasticsearch.yml 에 설정
 
 ## Dynamic Index Setting 
+POST twitter/_doc
+{
+    "comment": "Test"
+}
+
 # Number Of Replicas
 PUT twitter/_settings
 {
@@ -144,6 +149,11 @@ PUT _template/mytemplate
         "index.number_of_shards": 1,
         "index.routing.allocation.require.box_type" : "hot"
     }
+}
+
+POST test/_doc
+{
+    "test": "Test"
 }
 
 PUT test/_settings
@@ -257,6 +267,21 @@ $ curl -s -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/_bulk --
 $ curl -s -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/_bulk --data-binary "@shakespeare_6.0.json"
 
 # aliases API 
+
+POST test1/_doc
+{
+    "test1": "Test1"
+}
+
+POST test2/_doc
+{
+    "test2": "Test2"
+}
+
+POST test3/_doc
+{
+    "test3": "Test3"
+}
 
 # 생성
 POST /_aliases
