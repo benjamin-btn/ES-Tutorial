@@ -73,6 +73,32 @@ POST myanalyzer2/_analyze
     "text": "<b>Winter is coming!!!</b>"
 }
 
+PUT myanalyzer
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "my_analyzer": {
+                    "type": "custom",
+                    "char_filter": [ "html_strip", "my_char_filter" ],
+                    "tokenizer": "my_tokenizer",
+                    "filter": [ "my_stop", "lowercase", "english_stemmer" ]
+                }
+            },
+            "char_filter": {
+                "my_char_filter": { "type": "mapping", "mappings": [ ":) => _happy_", ":( => _sad_" ] }
+            },
+            "tokenizer": {
+                "my_tokenizer": { "type": "standard", "max_token_length": 6 }
+            },
+           "filter": {
+                "my_stop": { "type": "stop", "stopwords": ["and", "is", "the"] },
+                "english_stemmer": { "type": "stemmer", "language": "english" }
+            }
+        }
+    }
+}
+
 # URI Search
 GET bank/_search?from=0&size=100&q=address:Fleet&sort=age:asc
 
