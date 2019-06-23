@@ -1,0 +1,719 @@
+## Analysis
+# _analyze API
+POST _analyze
+{
+  "text": "Winter is Coming!!!"
+}
+
+# custom _analyze API
+POST _analyze
+{
+  "tokenizer": "standard",
+  "filter": [ "lowercase", "asciifolding" ],
+  "text": "Is this déja vu?"
+}
+
+# standard analyzer
+POST _analyze
+{
+    "analyzer": "standard",
+    "text": "Winter is coming!!!"
+}
+
+# custom analyzer with standard tokenizer
+POST _analyze
+{
+  "tokenizer": "standard",
+  "filter": [ "lowercase", "asciifolding" ],
+  "text": "Is this déja vu?"
+}
+
+# whitespace analyzer
+POST _analyze
+{
+    "analyzer": "whitespace",
+    "text": "Winter is coming!!!"
+}
+
+# custom analyzer with whitespace tokenizer
+POST _analyze
+{
+  "char_filter": [ "html_strip" ],
+  "tokenizer": "whitespace",
+  "filter": [ "uppercase" ],
+  "text": "<B>This is mixed analyzer</B>"
+}
+
+# standard analyzer with mapping
+PUT index_analyzer_settings1
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "my_analyzer" : {
+                    "type": "standard",
+                    "max_token_length": 5,
+                    "stopwords": "_english_"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "comment": {
+                    "type": "text",
+                    "analyzer": "my_analyzer"
+                }
+            }
+        }
+    }
+}
+
+POST index_analyzer_settings1/_analyze
+{
+  "analyzer": "my_analyzer", 
+  "text": "<B>This is Standard Analyzer</B>"
+}
+
+POST index_analyzer_settings1/_doc
+{
+  "comment": "<B>This is Standard Analyzer</B>"
+}
+
+GET index_analyzer_settings1/_search
+{
+  "query": {
+    "match": {
+        "comment": "standard"
+    }
+  } 
+}
+
+# custom analyzer using standard tokenizer with mappings
+PUT index_analyzer_settings2
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "my_analyzer" : {
+                    "type": "custom",
+                    "char_filter": [ "html_strip" ],
+                    "tokenizer": "standard",
+                    "filter": [ "uppercase" ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "comment": {
+                    "type": "text",
+                    "analyzer": "my_analyzer"
+                }
+            }
+        }
+    }
+}
+
+POST index_analyzer_settings2/_analyze
+{
+  "analyzer": "my_analyzer", 
+  "text": "<B>This is Standard Analyzer</B>"
+}
+
+POST index_analyzer_settings2/_doc
+{
+  "comment": "<B>This is Standard Analyzer</B>"
+}
+
+GET index_analyzer_settings2/_search
+{
+  "query": {
+    "match": {
+        "comment": "standard"
+    }
+  } 
+}
+
+# custom analyzer using custom char_filter, tokenizer, filter
+PUT mixed_analyzer
+{
+    "settings": {
+        "analysis": {
+            "char_filter": {
+                "my_char_filter": { 
+                    "type": "mapping", 
+                    "mappings": [ ":) => _happy_", ":( => _sad_" ] 
+                }
+            },
+            "tokenizer": {
+                "my_tokenizer": { 
+                    "type": "standard", 
+                    "max_token_length": 20 
+                }
+            },
+           "filter": {
+                "my_stop": { 
+                    "type": "stop", 
+                    "stopwords": ["and", "is", "the", "this"] 
+                }
+            },
+            "analyzer": {
+                "my_analyzer": {
+                    "type": "custom",
+                    "char_filter": [ "html_strip", "my_char_filter" ],
+                    "tokenizer": "my_tokenizer",
+                    "filter": [ "lowercase", "my_stop" ]
+                }
+            }
+        }
+    }
+}
+
+POST mixed_analyzer/_analyze
+{
+  "analyzer": "my_analyzer", 
+  "text": "<B>This is Standard Analyzer :)</B>"
+}
+
+# nori analyzer with mappings
+PUT nori_analyzer
+{
+    "settings": {
+        "analysis": {
+            "tokenizer": {
+                "nori_user_dict": {
+                    "type": "nori_tokenizer",
+                    "decompound_mode": "mixed",
+                    "user_dictionary": "userdict_ko.txt"
+                }
+            },
+            "analyzer": {
+                "my_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "nori_user_dict"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "comment": {
+                    "type": "text",
+                    "analyzer": "my_analyzer"
+                }
+            }
+        }
+    }
+}
+
+POST nori_analyzer/_analyze
+{
+  "analyzer": "my_analyzer", 
+  "text": "한국대학생선교회"
+}
+
+POST nori_analyzer/_doc
+{
+  "comment": "한국대학생선교회"
+}
+
+# "회" 로 한국대학생선교회가 검색되는 어이없는 상황
+GET nori_analyzer/_search
+{
+  "query": {
+    "match": {
+        "comment": "회"
+    }
+  } 
+}
+
+# 사전 반영 사항은 인덱스 close/open
+# 이미 인덱싱되어 토큰이 된 문서는 기존 사전에 의한 토큰이 반영됨
+POST nori_analyzer/_close
+POST nori_analyzer/_open
+
+# 하나의 인덱스에 여러개의 애널라이저를 설정할 순 있지만, text type 에는 하나의 애널라이저만 세팅 가능
+# 애널라이저의 설정이 다르기 때문에 토큰도 다름. 애널라이저 변경이 필요할 땐 반드시 리인덱싱
+PUT each_analyzer
+{
+    "settings": {
+        "analysis": {
+            "tokenizer": {
+                "nori_user_dict": {
+                    "type": "nori_tokenizer",
+                    "decompound_mode": "mixed",
+                    "user_dictionary": "userdict_ko.txt"
+                }
+            },
+            "analyzer": {
+                "my_analyzer1" : {
+                    "type": "standard",
+                    "max_token_length": 5,
+                    "stopwords": "_english_"
+                },
+                "my_analyzer2": {
+                    "type": "custom",
+                    "tokenizer": "nori_user_dict"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "comment1": {
+                    "type": "text",
+                    "analyzer": "my_analyzer1"
+                },
+                "comment2": {
+                    "type": "text",
+                    "analyzer": "my_analyzer2"
+                }
+
+            }
+        }
+    }
+}
+
+POST each_analyzer/_analyze
+{
+  "analyzer": "my_analyzer1", 
+  "text": "한국대학생선교회"
+}
+
+
+POST each_analyzer/_doc
+{
+  "comment1": "한국대학생선교회",
+  "comment2": "한국대학생선교회"
+}
+
+GET each_analyzer/_search
+{
+  "query": {
+    "match": {
+        "comment1": "한국대학생선교회"
+    }
+  } 
+}
+
+# URI Search
+GET bank/_search?from=0&size=100&q=address:Fleet&sort=age:asc
+
+# Request Body Search
+GET bank/_search
+{
+    "query" : {
+        "term" : { 
+            "city.keyword": "Mulino" 
+        }
+    }
+}
+
+# Pagination
+GET bank/_search
+{
+    "from":0, "size": 2,
+    "query" : {
+        "match" : { 
+            "address": "Fleet"
+        }
+    }
+}
+
+# max pagination size 변경
+PUT bank/_settings
+{
+  "index.max_result_window": 10001
+}
+
+# sort
+GET bank/_search
+{
+    "sort": {
+        "age": "desc"
+    }
+}
+
+# 스코어 계산방식
+GET bank/_search
+{
+    "explain": true,
+    "from":0, "size": 2,
+    "query" : {
+        "match" : { 
+            "address": "Fleet" 
+        }
+    }
+}
+
+# _source filtering
+GET bank/_search
+{
+    "_source": false, 
+    "sort": { "age": "desc" }
+}
+GET bank/_search
+{
+    "_source": [ "age","gender" ], 
+    "sort": { "age": "desc" }
+}
+GET bank/_search
+{
+    "_source": [ "*ge*" ], 
+    "sort": { "age": "desc" }
+}
+
+# highlight
+GET bank/_search
+{
+    "query": { 
+          "match": { 
+              "address": { 
+                  "query": "Fleet" 
+              } 
+          }
+      },
+      "highlight": {
+          "fields": {
+              "address": {}
+          }
+      }
+}
+
+# match query
+GET bank/_search
+{
+    "query": { 
+         "match": { 
+             "address": "345 Fleet" 
+         }
+    }
+}
+
+# boost
+GET bank/_search
+{
+    "query": {
+        "match": {
+            "address": {
+                "query": "345 Fleet",
+                "boost": 2.0
+            }
+        }
+    }
+}
+
+# match_phrase
+GET bank/_search
+{
+    "query": { 
+         "match_phrase": { 
+             "address": "Fleet Walk" 
+         }
+    }
+}
+
+# match_phrase_prefix
+GET bank/_search
+{
+    "query": { 
+         "match_phrase_prefix": { 
+             "address": "425 Fleet W"
+         }
+    }
+}
+
+# multi match
+POST multi_match_index/_doc
+{
+  "name": "ElasticSearch Engine",
+  "comment": "It's Best Solution"
+}
+
+POST multi_match_index/_doc
+{
+  "name": "Mongo DB",
+  "comment": "Difference with ElasticSearch Engine"
+}
+
+GET multi_match_index/_search
+{
+    "query": {
+        "multi_match": {
+            "query": "Engine",
+            "fields": [ "name", "comment"],
+             "operator" : "and"
+
+        }
+    }
+}
+
+# query_string
+GET bank/_search
+{
+   "query": {
+        "query_string" : {
+            "query" : "Walk Flee*",
+            "fields": [ "address", "employer"]
+        }
+    }
+}
+
+# term
+GET bank/_search
+{
+    "query": {
+        "term" : {
+            "gender.keyword": "M"
+        }
+    }
+}
+
+GET bank/_search
+{
+    "query": {
+        "term" : {
+            "gender.keyword": {
+                "value": "M",
+                "boost": 2.0
+            }
+        }
+    }
+}
+
+# terms
+GET bank/_search
+{
+    "query": {
+        "terms" : {
+            "gender.keyword": ["F","M"]
+        }
+    }
+}
+
+# range
+GET bank/_search
+{
+    "query": {
+        "range" : {
+            "age": {
+                "gte": 25,
+                "lte": 30
+            }
+        }
+    }
+}
+
+# wildcard
+GET bank/_search
+{
+    "query": {
+        "wildcard" : { 
+            "lastname.keyword": "D*e"
+        }
+    }
+}
+
+GET bank/_search
+{
+    "query": {
+        "wildcard" : { 
+            "lastname.keyword": "*e*"
+        }
+    }
+}
+
+# bool
+GET bank/_search
+{
+    "query": { 
+        "bool": { 
+            "must": [
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet" 
+                        }
+                    }
+                }
+            ],
+            "filter": [ 
+                { 
+                    "term":  { 
+                        "gender.keyword": "F"
+                    }
+                }, 
+                { 
+                    "range": { 
+                        "age": { 
+                            "gte": "30"
+                        }
+                    }
+                } 
+            ]
+        }
+    }
+}
+
+# must
+GET bank/_search
+{
+    "query": { 
+        "bool": { 
+            "must": [
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+
+# filter
+GET bank/_search
+{
+    "query": { 
+        "bool": { 
+            "filter": [
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+
+# should
+GET bank/_search
+{
+    "query": { 
+        "bool": {
+            "should": [
+                { 
+                    "match": { 
+                        "state": { 
+                            "query": "MI", 
+                            "boost": 2 
+                        }
+                    }
+                },
+                { 
+                    "term": { 
+                        "gender.keyword": { 
+                            "value": "M" 
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+
+GET bank/_search
+{
+    "query": { 
+        "bool": {
+            "should": [
+                { 
+                    "match": { 
+                        "state": { 
+                            "query": "MI", 
+                            "boost": 2
+                        }
+                    }
+                },
+                { 
+                    "term": { 
+                        "gender.keyword": { 
+                            "value": "M"
+                        }
+                    }
+                }
+            ],
+            "minimum_should_match" : 1
+        }
+    }
+}
+
+# must_not
+GET bank/_search
+{
+    "explain": true, 
+    "query": { 
+        "bool": { 
+            "must_not": [
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+
+# bool all
+GET bank/_search
+{
+    "query": { 
+        "bool": {
+            "must": [ 
+                { 
+                    "term":  { 
+                        "gender.keyword": "F"
+                    }
+                }
+            ],
+            "filter": [ 
+                { 
+                    "range": { 
+                        "age": { 
+                            "lte": "30"
+                        }
+                    }
+                }
+            ],
+            "must_not": [ 
+                { 
+                    "match": { 
+                        "address": "Hope"
+                    }
+                }
+            ],
+            "should": [ 
+                { 
+                    "match": { 
+                        "state": { 
+                            "query": "MI"
+                        }
+                    }
+                  
+                },
+                { 
+                    "match": { 
+                        "city": { 
+                            "query": "Nogal"
+                        }
+                    }
+                }
+            ],
+            "minimum_should_match" : 1
+        }
+    }
+}
+
