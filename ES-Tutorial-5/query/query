@@ -446,7 +446,9 @@ GET multi_match_index/_search
     "query": {
         "multi_match": {
             "query": "Engine",
-            "fields": [ "name", "comment"]
+            "fields": [ "name", "comment"],
+             "operator" : "and"
+
         }
     }
 }
@@ -472,12 +474,24 @@ GET bank/_search
     }
 }
 
+GET bank/_search
+{
+    "query": {
+        "term" : {
+            "gender.keyword": {
+                "value": "M",
+                "boost": 2.0
+            }
+        }
+    }
+}
+
 # terms
 GET bank/_search
 {
     "query": {
         "terms" : {
-          "gender.keyword": ["F","M"]
+            "gender.keyword": ["F","M"]
         }
     }
 }
@@ -589,19 +603,19 @@ GET bank/_search
         "bool": {
             "should": [
                 { 
-                  "match": { 
-                      "state": { 
-                          "query": "MI", 
-                          "boost": 2 
-                      }
-                  }
+                    "match": { 
+                        "state": { 
+                            "query": "MI", 
+                            "boost": 2 
+                        }
+                    }
                 },
                 { 
-                  "term": { 
-                      "gender.keyword": { 
-                          "value": "M" 
-                      }
-                  }
+                    "term": { 
+                        "gender.keyword": { 
+                            "value": "M" 
+                        }
+                    }
                 }
             ]
         }
@@ -637,6 +651,7 @@ GET bank/_search
 # must_not
 GET bank/_search
 {
+    "explain": true, 
     "query": { 
         "bool": { 
             "must_not": [
@@ -673,6 +688,13 @@ GET bank/_search
                     }
                 }
             ],
+            "must_not": [ 
+                { 
+                    "match": { 
+                        "address": "Hope"
+                    }
+                }
+            ],
             "should": [ 
                 { 
                     "match": { 
@@ -690,13 +712,7 @@ GET bank/_search
                     }
                 }
             ],
-            "must_not": [ 
-                { 
-                    "match": { 
-                        "address": "Hope"
-                    }
-                }
-            ]
+            "minimum_should_match" : 1
         }
     }
 }
