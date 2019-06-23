@@ -143,13 +143,22 @@ PUT mixed_analyzer
     "settings": {
         "analysis": {
             "char_filter": {
-                "my_char_filter": { "type": "mapping", "mappings": [ ":) => _happy_", ":( => _sad_" ] }
+                "my_char_filter": { 
+                    "type": "mapping", 
+                    "mappings": [ ":) => _happy_", ":( => _sad_" ] 
+                }
             },
             "tokenizer": {
-                "my_tokenizer": { "type": "standard", "max_token_length": 20 }
+                "my_tokenizer": { 
+                    "type": "standard", 
+                    "max_token_length": 20 
+                }
             },
            "filter": {
-                "my_stop": { "type": "stop", "stopwords": ["and", "is", "the", "this"] }
+                "my_stop": { 
+                    "type": "stop", 
+                    "stopwords": ["and", "is", "the", "this"] 
+                }
             },
             "analyzer": {
                 "my_analyzer": {
@@ -299,7 +308,9 @@ GET bank/_search?from=0&size=100&q=address:Fleet&sort=age:asc
 GET bank/_search
 {
     "query" : {
-        "term" : { "city.keyword": "Mulino" }
+        "term" : { 
+            "city.keyword": "Mulino" 
+        }
     }
 }
 
@@ -308,7 +319,9 @@ GET bank/_search
 {
     "from":0, "size": 2,
     "query" : {
-        "match" : { "address": "Fleet" }
+        "match" : { 
+            "address": "Fleet"
+        }
     }
 }
 
@@ -332,7 +345,9 @@ GET bank/_search
     "explain": true,
     "from":0, "size": 2,
     "query" : {
-        "match" : { "address": "Fleet" }
+        "match" : { 
+            "address": "Fleet" 
+        }
     }
 }
 
@@ -374,7 +389,9 @@ GET bank/_search
 GET bank/_search
 {
     "query": { 
-         "match": { "address": "345 Fleet" }
+         "match": { 
+             "address": "345 Fleet" 
+         }
     }
 }
 
@@ -395,7 +412,9 @@ GET bank/_search
 GET bank/_search
 {
     "query": { 
-         "match_phrase": { "address": "Fleet Walk" }
+         "match_phrase": { 
+             "address": "Fleet Walk" 
+         }
     }
 }
 
@@ -480,7 +499,18 @@ GET bank/_search
 GET bank/_search
 {
     "query": {
-        "wildcard" : { "lastname.keyword": "D*e" }
+        "wildcard" : { 
+            "lastname.keyword": "D*e"
+        }
+    }
+}
+
+GET bank/_search
+{
+    "query": {
+        "wildcard" : { 
+            "lastname.keyword": "*e*"
+        }
     }
 }
 
@@ -490,11 +520,27 @@ GET bank/_search
     "query": { 
         "bool": { 
             "must": [
-               { "match": { "address": { "query": "Fleet" }}}
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet" 
+                        }
+                    }
+                }
             ],
             "filter": [ 
-                { "term":  { "gender.keyword": "F" }}, 
-                { "range": { "age": { "gte": "30" }}} 
+                { 
+                    "term":  { 
+                        "gender.keyword": "F"
+                    }
+                }, 
+                { 
+                    "range": { 
+                        "age": { 
+                            "gte": "30"
+                        }
+                    }
+                } 
             ]
         }
     }
@@ -506,7 +552,13 @@ GET bank/_search
     "query": { 
         "bool": { 
             "must": [
-               { "match": { "address": { "query": "Fleet" }}}
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
             ]
         }
     }
@@ -518,7 +570,13 @@ GET bank/_search
     "query": { 
         "bool": { 
             "filter": [
-               { "match": { "address": { "query": "Fleet" }}}
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
             ]
         }
     }
@@ -530,8 +588,46 @@ GET bank/_search
     "query": { 
         "bool": {
             "should": [
-                { "match": { "state": { "query": "MI", "boost": 2 }}},
-                { "term": { "gender.keyword": { "value": "M" }}}
+                { 
+                  "match": { 
+                      "state": { 
+                          "query": "MI", 
+                          "boost": 2 
+                      }
+                  }
+                },
+                { 
+                  "term": { 
+                      "gender.keyword": { 
+                          "value": "M" 
+                      }
+                  }
+                }
+            ]
+        }
+    }
+}
+
+GET bank/_search
+{
+    "query": { 
+        "bool": {
+            "should": [
+                { 
+                    "match": { 
+                        "state": { 
+                            "query": "MI", 
+                            "boost": 2
+                        }
+                    }
+                },
+                { 
+                    "term": { 
+                        "gender.keyword": { 
+                            "value": "M"
+                        }
+                    }
+                }
             ],
             "minimum_should_match" : 1
         }
@@ -544,7 +640,13 @@ GET bank/_search
     "query": { 
         "bool": { 
             "must_not": [
-               { "match": { "address": { "query": "Fleet" }}}
+                { 
+                    "match": { 
+                        "address": { 
+                            "query": "Fleet"
+                        }
+                    }
+                }
             ]
         }
     }
@@ -555,12 +657,47 @@ GET bank/_search
 {
     "query": { 
         "bool": {
-            "must": [ { "term":  { "gender.keyword": "F" }}],
-            "filter": [ { "range": { "age": { "lte": "30" }}}],
-            "should": [ { "match": { "state": { "query": "MI" }}},
-                               { "match": { "city": { "query": "Nogal" }}}],
-            "must_not": [ { "match": { "address": "Hope" }}]
-       }
+            "must": [ 
+                { 
+                    "term":  { 
+                        "gender.keyword": "F"
+                    }
+                }
+            ],
+            "filter": [ 
+                { 
+                    "range": { 
+                        "age": { 
+                            "lte": "30"
+                        }
+                    }
+                }
+            ],
+            "should": [ 
+                { 
+                    "match": { 
+                        "state": { 
+                            "query": "MI"
+                        }
+                    }
+                  
+                },
+                { 
+                    "match": { 
+                        "city": { 
+                            "query": "Nogal"
+                        }
+                    }
+                }
+            ],
+            "must_not": [ 
+                { 
+                    "match": { 
+                        "address": "Hope"
+                    }
+                }
+            ]
+        }
     }
 }
 
