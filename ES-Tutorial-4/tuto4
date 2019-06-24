@@ -26,7 +26,7 @@ function install_es_packages
 {
     wget 2> /dev/null
     if [ $? -ne 1 ]; then
-        sudo yum -y install wget
+        sudo yum -y install wget tmux
     fi
 
     java -version 2> /dev/null
