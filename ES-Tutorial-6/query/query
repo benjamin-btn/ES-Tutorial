@@ -1,6 +1,6 @@
 ## Static Mapping
 # Text Field
-PUT text_index1
+PUT text_index
 {
     "mappings": {
         "_doc": {
@@ -13,16 +13,16 @@ PUT text_index1
     }
 }
 
-GET text_index1
+GET text_index/_mappings/_doc
 
-POST text_index1/_doc
+POST text_index/_doc
 {
-  "title": "Text Field"
+    "title": "Text Field"
 }
 
-GET text_index1/_search
+GET text_index/_search
 
-GET text_index1/_search
+GET text_index/_search
 {
     "query": {
         "term" : {
@@ -31,39 +31,16 @@ GET text_index1/_search
     }
 }
 
-GET text_index1/_search
+POST text_index/_analyze
+{
+    "text": "Text Field"
+}
+
+GET text_index/_search
 {
     "query": {
         "match" : {
-            "title": " Text Field"
-        }
-    }
-}
-
-# dynamic text field
-POST text_index2/_doc
-{
-  "title": "Text Field"
-}
-
-GET text_index2
-
-GET text_index2/_search
-
-GET text_index1/_search
-{
-    "query": {
-        "term" : {
             "title": "Text Field"
-        }
-    }
-}
-
-GET text_index1/_search
-{
-    "query": {
-        "match" : {
-            "title": " Text Field"
         }
     }
 }
@@ -75,7 +52,7 @@ PUT keyword_index
         "_doc": {
             "properties": {
                 "title": {
-                    "type":  "keyword"
+                    "type": "keyword"
                 }
             }
         }
@@ -84,10 +61,10 @@ PUT keyword_index
 
 POST keyword_index/_doc
 {
-  "title": "Keyword Field"
+    "title": "Keyword Field"
 }
 
-GET keyword_index
+GET keyword_index/_mappings/_doc
 
 GET keyword_index/_search
 {
@@ -102,7 +79,44 @@ GET keyword_index/_search
 {
     "query": {
         "match" : {
-            "title": " Keyword Field"
+            "title": "Keyword Field"
+        }
+    }
+}
+
+# dynamic text field
+POST dynamic_index/_doc
+{
+    "title": "Text Field"
+}
+
+GET dynamic_index/_mappings/_doc
+
+GET dynamic_index/_search
+
+GET dynamic_index/_search
+{
+    "query": {
+        "term" : {
+            "title": "Text Field"
+        }
+    }
+}
+
+GET dynamic_index/_search
+{
+    "query": {
+        "match" : {
+            "title": "Text Field"
+        }
+    }
+}
+
+GET dynamic_index/_search
+{
+    "query": {
+        "term" : {
+            "title.keyword": "Text Field"
         }
     }
 }
@@ -121,7 +135,7 @@ PUT date_index
     }
 }
 
-GET date_index
+GET date_index/_mappings/_doc
 
 POST date_index/_doc
 { "date": "2015-01-01" }
@@ -134,14 +148,16 @@ POST date_index/_doc
 
 GET date_index/_search
 {
-  "sort": { "date": "asc"}
+    "sort": { 
+        "date": "asc"
+    }
 }
 
 # Date Dynamic Index
 POST date_dynamic1/_doc
 { "date": "2015-01-01T12:10:30Z" }
 
-GET date_dynamic1
+GET date_dynamic1/_mappings/_doc
 
 POST date_dynamic1/_doc
 { "date": 1420070400001 }
@@ -149,7 +165,7 @@ POST date_dynamic1/_doc
 POST date_dynamic2/_doc
 { "date": 1420070400001 }
 
-GET date_dynamic2
+GET date_dynamic2/_mappings/_doc
 
 POST date_dynamic2/_doc
 { "date": "2015-01-01T12:10:30Z" }
@@ -174,7 +190,7 @@ POST date_index_format/_doc
 { "date": "2015-01-01T12:10:30Z" }
 
 # 지정된 포맷
-POST date_index_format/_doc/
+POST date_index_format/_doc
 { "date": 1420070400001 }
 
 # Object Field
