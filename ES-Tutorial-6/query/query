@@ -75,15 +75,6 @@ GET keyword_index/_search
     }
 }
 
-GET keyword_index/_search
-{
-    "query": {
-        "match" : {
-            "title": "Keyword Field"
-        }
-    }
-}
-
 # dynamic text field
 POST dynamic_index/_doc
 {
@@ -148,7 +139,7 @@ POST date_index/_doc
 
 GET date_index/_search
 {
-    "sort": { 
+    "sort": {
         "date": "asc"
     }
 }
@@ -184,7 +175,7 @@ PUT date_index_format
         }
     }
 }
-
+x
 # 지정되지 않은 포맷
 POST date_index_format/_doc
 { "date": "2015-01-01T12:10:30Z" }
@@ -205,24 +196,24 @@ PUT object_index
                 },
                 "manager": {
                     "properties": {
-                        "age":  { 
+                        "age":  {
                             "type": "integer"
                         },
                         "name": {
                             "properties": {
-                                "first": { 
+                                "first": {
                                     "type": "keyword"
                                 },
-                                "last":  { 
+                                "last":  {
                                     "type": "keyword"
                                 }
-                            }  
-                        }  
-                    } 
-                }  
-            }  
-        }  
-    }  
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 GET object_index
@@ -236,18 +227,18 @@ PUT object_index/_mapping/_doc
         },
         "manager": {
             "properties": {
-                "age":  { 
+                "age":  {
                     "type": "integer"
                 },
                 "name": {
                     "properties": {
-                        "first": { 
+                        "first": {
                             "type": "keyword"
                         },
-                        "last": { 
+                        "last": {
                             "type": "keyword"
                         },
-                        "full": { 
+                        "full": {
                             "type": "text"
                         }
                     }
@@ -268,24 +259,24 @@ PUT object_index/_mapping/_doc
         },
         "manager": {
             "properties": {
-                "age":  { 
+                "age":  {
                     "type": "integer"
                 },
                 "name": {
                     "properties": {
-                        "first": { 
+                        "first": {
                             "type": "keyword"
                         },
-                        "last": { 
+                        "last": {
                             "type": "keyword"
                         },
-                        "full": { 
+                        "full": {
                             "type": "keyword"
-                        } 
-                    } 
-                } 
-            } 
-        } 
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -357,13 +348,13 @@ GET nested_index/_search
             "query": {
                 "bool": {
                     "must": [
-                        { 
-                            "match": { 
+                        {
+                            "match": {
                                 "user.first": "John"
                             }
                         },
-                        { 
-                            "match": { 
+                        {
+                            "match": {
                                 "user.last": "Smith"
                             }
                         }
@@ -406,15 +397,15 @@ PUT copy_index
     "mappings": {
         "_doc": {
             "properties": {
-                "first_name": { 
-                    "type": "text", 
+                "first_name": {
+                    "type": "text",
                     "copy_to": "full_name"
                 },
-                "last_name": { 
-                    "type": "text", 
+                "last_name": {
+                    "type": "text",
                     "copy_to": "full_name"
                 },
-                "full_name": { 
+                "full_name": {
                     "type": "text"
                 }
             }
@@ -503,15 +494,15 @@ PUT myindex
     "mappings": {
         "_doc": {
             "properties": {
-                "first_name": { 
-                    "type": "text", 
+                "first_name": {
+                    "type": "text",
                     "copy_to": "full_name"
                 },
-                "last_name": { 
-                    "type": "text", 
+                "last_name": {
+                    "type": "text",
                     "copy_to": "full_name"
                 },
-                "full_name": { 
+                "full_name": {
                     "type": "text"
                 }
             }
@@ -545,7 +536,7 @@ GET nonum
 GET nonum/_search
 {
     "query": {
-        "term": { 
+        "term": {
             "account_no": "12345"
         }
     }
@@ -554,8 +545,8 @@ GET nonum/_search
 GET nonum/_search
 {
     "query": {
-        "range": { 
-            "account_no": { 
+        "range": {
+            "account_no": {
                 "gte": 12300
             }
         }
@@ -575,9 +566,9 @@ POST nonum/_search?size=0
         }
     },
     "aggs" : {
-        "hat_prices" : { 
-            "sum" : { 
-                "field" : "account_no" 
+        "hat_prices" : {
+            "sum" : {
+                "field" : "account_no"
             }
         }
     }
@@ -587,7 +578,7 @@ POST nonum/_search?size=0
 GET bank/_search
 {
     "query": {
-        "query_string" : { 
+        "query_string" : {
             "query": "Flee*"
         }
     }
@@ -596,7 +587,7 @@ GET bank/_search
 GET bank/_search
 {
     "query": {
-        "match": { 
+        "match": {
             "address": "Fleet"
         }
     }
@@ -608,7 +599,7 @@ PUT termquery
     "mappings": {
         "_doc": {
             "properties": {
-                "gender": { 
+                "gender": {
                     "type": "keyword"
                 }
             }
@@ -623,7 +614,7 @@ GET termquery/_search
 {
     "query": {
         "match": {
-            "gender": { 
+            "gender": {
                 "query": "F"
             }
         }
@@ -634,7 +625,7 @@ GET termquery/_search
 {
     "query": {
         "term": {
-            "gender": { 
+            "gender": {
                 "value": "F"
             }
         }
@@ -648,7 +639,7 @@ GET bank/_search
         "bool": {
             "must": [
                 {
-                    "term":  { 
+                    "term":  {
                         "gender.keyword": "F"
                     }
                 }
@@ -663,7 +654,7 @@ GET bank/_search
         "bool": {
             "filter": [
                 {
-                    "term":  { 
+                    "term":  {
                         "gender.keyword": "F"
                     }
                 }
@@ -695,7 +686,7 @@ POST rindex/_doc?routing=user1
 POST rindex/_search
 {
     "query": {
-        "match": { 
+        "match": {
             "title": "fastcampus"
         }
     }
