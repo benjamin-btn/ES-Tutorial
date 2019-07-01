@@ -17,7 +17,7 @@ Master 2~3번 장비에서 실습합니다.
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial/ES-Tutorial-3-1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3-1
 ##################### Menu ##############
  $ ./tuto3 [Command]
 #####################%%%%%%##############
@@ -39,9 +39,9 @@ Master 2~3번 장비에서 실습합니다.
 4) node.master, node.data role 추가 설정
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3 1
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3-1 1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3 2
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3-1 2
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 ### For ClusterName & Node Name
