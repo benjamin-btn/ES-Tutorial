@@ -1,0 +1,271 @@
+2019-07-01 12:52:54,320 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:52:54,325 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:52:54,340 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-01 12:52:54,340 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-07-01 12:52:54,340 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:52:54,340 INFO      Job completed.
+2019-07-01 12:52:54,559 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:52:54,563 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:52:54,576 INFO      Skipping action "delete_indices" due to empty list: <class 'curator.exceptions.NoIndices'>
+2019-07-01 12:52:54,576 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:52:54,576 INFO      Job completed.
+2019-07-01 12:53:38,480 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:53:38,484 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:53:38,497 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-01 12:53:38,498 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-07-01 12:53:38,498 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:53:38,498 INFO      Job completed.
+2019-07-01 12:53:38,715 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:53:38,719 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:53:38,735 INFO      Skipping action "delete_indices" due to empty list: <class 'curator.exceptions.NoIndices'>
+2019-07-01 12:53:38,735 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:53:38,735 INFO      Job completed.
+2019-07-01 12:54:22,153 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:54:22,157 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:54:22,171 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-01 12:54:22,171 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-07-01 12:54:22,171 INFO      DRY-RUN: delete_indices: allfield with arguments: {}
+2019-07-01 12:54:22,171 INFO      DRY-RUN: delete_indices: bank with arguments: {}
+2019-07-01 12:54:22,171 INFO      DRY-RUN: delete_indices: nested_index with arguments: {}
+2019-07-01 12:54:22,171 INFO      DRY-RUN: delete_indices: object_index with arguments: {}
+2019-07-01 12:54:22,171 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:54:22,172 INFO      Job completed.
+2019-07-01 12:54:22,391 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-01 12:54:22,395 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-01 12:54:22,409 INFO      Deleting 4 selected indices: [u'nested_index', u'object_index', u'allfield', u'bank']
+2019-07-01 12:54:22,409 INFO      ---deleting index nested_index
+2019-07-01 12:54:22,409 INFO      ---deleting index object_index
+2019-07-01 12:54:22,409 INFO      ---deleting index allfield
+2019-07-01 12:54:22,409 INFO      ---deleting index bank
+2019-07-01 12:54:22,502 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-01 12:54:22,502 INFO      Job completed.
+2019-07-02 14:13:52,986 INFO      Preparing Action ID: 1, "alias"
+2019-07-02 14:13:52,992 INFO      Trying Action ID: 1, "alias": No description given
+2019-07-02 14:13:53,020 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:13:53,020 INFO      DRY-RUN: alias: adding index "tuto-2019-07-04" to alias "alias-today"
+2019-07-02 14:13:53,020 INFO      DRY-RUN: alias: adding index "tuto-2019-07-03" to alias "alias-today"
+2019-07-02 14:13:53,020 INFO      DRY-RUN: alias: adding index "tuto-2019-07-02" to alias "alias-today"
+2019-07-02 14:13:53,020 INFO      Action ID: 1, "alias" completed.
+2019-07-02 14:13:53,021 INFO      Job completed.
+2019-07-02 14:13:53,246 INFO      Preparing Action ID: 1, "alias"
+2019-07-02 14:13:53,251 INFO      Trying Action ID: 1, "alias": No description given
+2019-07-02 14:13:53,278 INFO      Updating aliases...
+2019-07-02 14:13:53,279 INFO      Alias actions: {'actions': [{'add': {'index': u'tuto-2019-07-04', 'alias': 'alias-today'}}, {'add': {'index': u'tuto-2019-07-03', 'alias': 'alias-today'}}, {'add': {'index': u'tuto-2019-07-02', 'alias': 'alias-today'}}]}
+2019-07-02 14:13:53,311 INFO      Action ID: 1, "alias" completed.
+2019-07-02 14:13:53,311 INFO      Job completed.
+2019-07-02 14:27:42,602 INFO      Preparing Action ID: 1, "alias"
+2019-07-02 14:27:42,608 INFO      Trying Action ID: 1, "alias": No description given
+2019-07-02 14:27:42,634 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:27:42,634 INFO      DRY-RUN: alias: removing index "tuto-2019-07-01" from alias "alias-today"
+2019-07-02 14:27:42,634 INFO      DRY-RUN: alias: adding index "tuto-2019-07-02" to alias "alias-today"
+2019-07-02 14:27:42,634 INFO      Action ID: 1, "alias" completed.
+2019-07-02 14:27:42,634 INFO      Job completed.
+2019-07-02 14:27:42,859 INFO      Preparing Action ID: 1, "alias"
+2019-07-02 14:27:42,863 INFO      Trying Action ID: 1, "alias": No description given
+2019-07-02 14:27:42,890 INFO      Updating aliases...
+2019-07-02 14:27:42,890 INFO      Alias actions: {'actions': [{'remove': {'index': u'tuto-2019-07-01', 'alias': 'alias-today'}}, {'add': {'index': u'tuto-2019-07-02', 'alias': 'alias-today'}}]}
+2019-07-02 14:27:42,913 INFO      Action ID: 1, "alias" completed.
+2019-07-02 14:27:42,913 INFO      Job completed.
+2019-07-02 14:30:16,954 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:30:16,958 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:30:16,974 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:30:16,975 INFO      (CLOSED) indices may be shown that may not be acted on by action "close".
+2019-07-02 14:30:16,975 INFO      DRY-RUN: close: tuto-2019-06-29 with arguments: {'delete_aliases': False}
+2019-07-02 14:30:16,975 INFO      DRY-RUN: close: tuto-2019-06-30 with arguments: {'delete_aliases': False}
+2019-07-02 14:30:16,975 INFO      DRY-RUN: close: tuto-2019-07-01 with arguments: {'delete_aliases': False}
+2019-07-02 14:30:16,975 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:30:16,975 INFO      Preparing Action ID: 2, "open"
+2019-07-02 14:30:16,976 INFO      Trying Action ID: 2, "open": No description given
+2019-07-02 14:30:16,990 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:30:16,990 INFO      (CLOSED) indices may be shown that may not be acted on by action "open".
+2019-07-02 14:30:16,990 INFO      DRY-RUN: open: tuto-2019-06-29 with arguments: {}
+2019-07-02 14:30:16,990 INFO      DRY-RUN: open: tuto-2019-06-30 with arguments: {}
+2019-07-02 14:30:16,990 INFO      DRY-RUN: open: tuto-2019-07-01 with arguments: {}
+2019-07-02 14:30:16,990 INFO      Action ID: 2, "open" completed.
+2019-07-02 14:30:16,990 INFO      Job completed.
+2019-07-02 14:30:17,219 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:30:17,224 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:30:17,240 INFO      Closing 3 selected indices: [u'tuto-2019-06-30', u'tuto-2019-06-29', u'tuto-2019-07-01']
+2019-07-02 14:30:17,352 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:30:17,352 INFO      Preparing Action ID: 2, "open"
+2019-07-02 14:30:17,354 INFO      Trying Action ID: 2, "open": No description given
+2019-07-02 14:30:17,368 INFO      Opening 3 selected indices: [u'tuto-2019-06-29', u'tuto-2019-06-30', u'tuto-2019-07-01']
+2019-07-02 14:30:17,419 INFO      Action ID: 2, "open" completed.
+2019-07-02 14:30:17,419 INFO      Job completed.
+2019-07-02 14:31:37,117 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:31:37,121 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:31:37,139 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:31:37,139 INFO      (CLOSED) indices may be shown that may not be acted on by action "close".
+2019-07-02 14:31:37,139 INFO      DRY-RUN: close: tuto-2019-06-29 with arguments: {'delete_aliases': False}
+2019-07-02 14:31:37,140 INFO      DRY-RUN: close: tuto-2019-06-30 with arguments: {'delete_aliases': False}
+2019-07-02 14:31:37,140 INFO      DRY-RUN: close: tuto-2019-07-01 with arguments: {'delete_aliases': False}
+2019-07-02 14:31:37,140 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:31:37,140 INFO      Job completed.
+2019-07-02 14:31:37,361 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:31:37,365 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:31:37,383 INFO      Closing 3 selected indices: [u'tuto-2019-06-29', u'tuto-2019-06-30', u'tuto-2019-07-01']
+2019-07-02 14:31:37,541 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:31:37,542 INFO      Job completed.
+2019-07-02 14:32:14,774 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:32:14,778 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:32:14,794 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:32:14,794 INFO      (CLOSED) indices may be shown that may not be acted on by action "close".
+2019-07-02 14:32:14,794 INFO      DRY-RUN: close: tuto-2019-06-29 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:14,794 INFO      DRY-RUN: close: tuto-2019-06-30 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:14,794 INFO      DRY-RUN: close: tuto-2019-07-01 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:14,794 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:32:14,794 INFO      Preparing Action ID: 2, "open"
+2019-07-02 14:32:14,795 INFO      Trying Action ID: 2, "open": No description given
+2019-07-02 14:32:14,809 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:32:14,809 INFO      (CLOSED) indices may be shown that may not be acted on by action "open".
+2019-07-02 14:32:14,809 INFO      DRY-RUN: open: tuto-2019-06-29 (CLOSED) with arguments: {}
+2019-07-02 14:32:14,809 INFO      DRY-RUN: open: tuto-2019-06-30 (CLOSED) with arguments: {}
+2019-07-02 14:32:14,809 INFO      DRY-RUN: open: tuto-2019-07-01 (CLOSED) with arguments: {}
+2019-07-02 14:32:14,809 INFO      Action ID: 2, "open" completed.
+2019-07-02 14:32:14,809 INFO      Job completed.
+2019-07-02 14:32:15,033 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:32:15,037 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:32:15,053 ERROR     Unable to complete action "close".  No actionable items in list: <class 'curator.exceptions.NoIndices'>
+2019-07-02 14:32:37,748 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:32:37,752 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:32:37,768 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:32:37,768 INFO      (CLOSED) indices may be shown that may not be acted on by action "close".
+2019-07-02 14:32:37,768 INFO      DRY-RUN: close: tuto-2019-06-29 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:37,768 INFO      DRY-RUN: close: tuto-2019-06-30 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:37,768 INFO      DRY-RUN: close: tuto-2019-07-01 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:32:37,768 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:32:37,768 INFO      Preparing Action ID: 2, "open"
+2019-07-02 14:32:37,769 INFO      Trying Action ID: 2, "open": No description given
+2019-07-02 14:32:37,783 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:32:37,783 INFO      (CLOSED) indices may be shown that may not be acted on by action "open".
+2019-07-02 14:32:37,783 INFO      DRY-RUN: open: tuto-2019-06-29 (CLOSED) with arguments: {}
+2019-07-02 14:32:37,783 INFO      DRY-RUN: open: tuto-2019-06-30 (CLOSED) with arguments: {}
+2019-07-02 14:32:37,783 INFO      DRY-RUN: open: tuto-2019-07-01 (CLOSED) with arguments: {}
+2019-07-02 14:32:37,783 INFO      Action ID: 2, "open" completed.
+2019-07-02 14:32:37,783 INFO      Job completed.
+2019-07-02 14:32:38,005 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:32:38,009 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:32:38,027 ERROR     Unable to complete action "close".  No actionable items in list: <class 'curator.exceptions.NoIndices'>
+2019-07-02 14:33:47,151 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:33:47,156 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:33:47,172 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:33:47,172 INFO      (CLOSED) indices may be shown that may not be acted on by action "close".
+2019-07-02 14:33:47,172 INFO      DRY-RUN: close: tuto-2019-06-29 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:33:47,172 INFO      DRY-RUN: close: tuto-2019-06-30 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:33:47,172 INFO      DRY-RUN: close: tuto-2019-07-01 (CLOSED) with arguments: {'delete_aliases': False}
+2019-07-02 14:33:47,172 INFO      Action ID: 1, "close" completed.
+2019-07-02 14:33:47,172 INFO      Preparing Action ID: 2, "open"
+2019-07-02 14:33:47,173 INFO      Trying Action ID: 2, "open": No description given
+2019-07-02 14:33:47,188 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:33:47,188 INFO      (CLOSED) indices may be shown that may not be acted on by action "open".
+2019-07-02 14:33:47,188 INFO      DRY-RUN: open: tuto-2019-06-29 (CLOSED) with arguments: {}
+2019-07-02 14:33:47,188 INFO      DRY-RUN: open: tuto-2019-06-30 (CLOSED) with arguments: {}
+2019-07-02 14:33:47,188 INFO      DRY-RUN: open: tuto-2019-07-01 (CLOSED) with arguments: {}
+2019-07-02 14:33:47,188 INFO      Action ID: 2, "open" completed.
+2019-07-02 14:33:47,188 INFO      Job completed.
+2019-07-02 14:33:47,413 INFO      Preparing Action ID: 1, "close"
+2019-07-02 14:33:47,418 INFO      Trying Action ID: 1, "close": No description given
+2019-07-02 14:33:47,433 ERROR     Unable to complete action "close".  No actionable items in list: <class 'curator.exceptions.NoIndices'>
+2019-07-02 14:34:03,129 INFO      Preparing Action ID: 1, "open"
+2019-07-02 14:34:03,133 INFO      Trying Action ID: 1, "open": No description given
+2019-07-02 14:34:03,149 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:34:03,149 INFO      (CLOSED) indices may be shown that may not be acted on by action "open".
+2019-07-02 14:34:03,150 INFO      DRY-RUN: open: tuto-2019-06-29 (CLOSED) with arguments: {}
+2019-07-02 14:34:03,150 INFO      DRY-RUN: open: tuto-2019-06-30 (CLOSED) with arguments: {}
+2019-07-02 14:34:03,150 INFO      DRY-RUN: open: tuto-2019-07-01 (CLOSED) with arguments: {}
+2019-07-02 14:34:03,150 INFO      Action ID: 1, "open" completed.
+2019-07-02 14:34:03,150 INFO      Job completed.
+2019-07-02 14:34:03,370 INFO      Preparing Action ID: 1, "open"
+2019-07-02 14:34:03,375 INFO      Trying Action ID: 1, "open": No description given
+2019-07-02 14:34:03,391 INFO      Opening 3 selected indices: [u'tuto-2019-06-29', u'tuto-2019-06-30', u'tuto-2019-07-01']
+2019-07-02 14:34:03,438 INFO      Action ID: 1, "open" completed.
+2019-07-02 14:34:03,438 INFO      Job completed.
+2019-07-02 14:59:09,981 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-02 14:59:09,987 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-02 14:59:10,000 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 14:59:10,000 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-07-02 14:59:10,000 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-02 14:59:10,000 INFO      Job completed.
+2019-07-02 14:59:10,221 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-02 14:59:10,225 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-02 14:59:10,238 INFO      Skipping action "delete_indices" due to empty list: <class 'curator.exceptions.NoIndices'>
+2019-07-02 14:59:10,239 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-02 14:59:10,239 INFO      Job completed.
+2019-07-02 15:04:21,497 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-02 15:04:21,502 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-02 15:04:21,518 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:04:21,518 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-07-02 15:04:21,518 INFO      DRY-RUN: delete_indices: tuto-2019-06-29 with arguments: {}
+2019-07-02 15:04:21,518 INFO      DRY-RUN: delete_indices: tuto-2019-06-30 with arguments: {}
+2019-07-02 15:04:21,518 INFO      DRY-RUN: delete_indices: tuto-2019-07-01 with arguments: {}
+2019-07-02 15:04:21,519 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-02 15:04:21,519 INFO      Job completed.
+2019-07-02 15:04:21,738 INFO      Preparing Action ID: 1, "delete_indices"
+2019-07-02 15:04:21,743 INFO      Trying Action ID: 1, "delete_indices": No description given
+2019-07-02 15:04:21,759 INFO      Deleting 3 selected indices: [u'tuto-2019-06-29', u'tuto-2019-07-01', u'tuto-2019-06-30']
+2019-07-02 15:04:21,759 INFO      ---deleting index tuto-2019-06-29
+2019-07-02 15:04:21,759 INFO      ---deleting index tuto-2019-07-01
+2019-07-02 15:04:21,759 INFO      ---deleting index tuto-2019-06-30
+2019-07-02 15:04:21,833 INFO      Action ID: 1, "delete_indices" completed.
+2019-07-02 15:04:21,833 INFO      Job completed.
+2019-07-02 15:05:58,968 INFO      Preparing Action ID: 1, "rollover"
+2019-07-02 15:05:58,972 INFO      Trying Action ID: 1, "rollover": No description given
+2019-07-02 15:05:58,975 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:05:58,985 INFO      DRY-RUN: Rollover conditions not met. Index DRY-RUN:  not rolled over.
+2019-07-02 15:05:58,985 INFO      Action ID: 1, "rollover" completed.
+2019-07-02 15:05:58,985 INFO      Job completed.
+2019-07-02 15:05:59,203 INFO      Preparing Action ID: 1, "rollover"
+2019-07-02 15:05:59,207 INFO      Trying Action ID: 1, "rollover": No description given
+2019-07-02 15:05:59,208 INFO      Performing index rollover
+2019-07-02 15:05:59,211 INFO      Rollover conditions not met. Index  not rolled over.
+2019-07-02 15:05:59,211 INFO      Action ID: 1, "rollover" completed.
+2019-07-02 15:05:59,212 INFO      Job completed.
+2019-07-02 15:06:52,786 INFO      Preparing Action ID: 1, "rollover"
+2019-07-02 15:06:52,791 INFO      Trying Action ID: 1, "rollover": No description given
+2019-07-02 15:06:52,792 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:06:52,795 INFO      DRY-RUN: Old index rollover-curator-000001 rolled over to new index rollover-curator-000002
+2019-07-02 15:06:52,795 INFO      Action ID: 1, "rollover" completed.
+2019-07-02 15:06:52,795 INFO      Job completed.
+2019-07-02 15:06:53,012 INFO      Preparing Action ID: 1, "rollover"
+2019-07-02 15:06:53,016 INFO      Trying Action ID: 1, "rollover": No description given
+2019-07-02 15:06:53,018 INFO      Performing index rollover
+2019-07-02 15:06:53,093 INFO      Old index rollover-curator-000001 rolled over to new index rollover-curator-000002
+2019-07-02 15:06:53,093 INFO      Action ID: 1, "rollover" completed.
+2019-07-02 15:06:53,093 INFO      Job completed.
+2019-07-02 15:07:50,175 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:07:50,179 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:07:50,193 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:07:50,193 INFO      (CLOSED) indices may be shown that may not be acted on by action "allocation".
+2019-07-02 15:07:50,193 INFO      Action ID: 1, "allocation" completed.
+2019-07-02 15:07:50,193 INFO      Job completed.
+2019-07-02 15:07:50,413 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:07:50,418 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:07:50,432 ERROR     Unable to complete action "allocation".  No actionable items in list: <class 'curator.exceptions.NoIndices'>
+2019-07-02 15:08:07,489 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:08:07,496 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:08:07,512 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:08:07,512 INFO      (CLOSED) indices may be shown that may not be acted on by action "allocation".
+2019-07-02 15:08:07,513 INFO      DRY-RUN: allocation: tuto-2019-06-30 with arguments: {'body': {'index.routing.allocation.require.box_type': 'warm'}}
+2019-07-02 15:08:07,513 INFO      DRY-RUN: allocation: tuto-2019-07-01 with arguments: {'body': {'index.routing.allocation.require.box_type': 'warm'}}
+2019-07-02 15:08:07,513 INFO      Action ID: 1, "allocation" completed.
+2019-07-02 15:08:07,513 INFO      Job completed.
+2019-07-02 15:08:07,731 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:08:07,735 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:08:07,754 INFO      Updating 2 selected indices: [u'tuto-2019-06-30', u'tuto-2019-07-01']
+2019-07-02 15:08:07,754 INFO      Updating index setting {'index.routing.allocation.require.box_type': 'warm'}
+2019-07-02 15:08:07,784 INFO      Action ID: 1, "allocation" completed.
+2019-07-02 15:08:07,784 INFO      Job completed.
+2019-07-02 15:08:38,673 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:08:38,677 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:08:38,694 INFO      DRY-RUN MODE.  No changes will be made.
+2019-07-02 15:08:38,694 INFO      (CLOSED) indices may be shown that may not be acted on by action "allocation".
+2019-07-02 15:08:38,694 INFO      DRY-RUN: allocation: tuto-2019-06-30 with arguments: {'body': {'index.routing.allocation.require.box_type': 'warm'}}
+2019-07-02 15:08:38,694 INFO      DRY-RUN: allocation: tuto-2019-07-01 with arguments: {'body': {'index.routing.allocation.require.box_type': 'warm'}}
+2019-07-02 15:08:38,694 INFO      Action ID: 1, "allocation" completed.
+2019-07-02 15:08:38,694 INFO      Job completed.
+2019-07-02 15:08:38,915 INFO      Preparing Action ID: 1, "allocation"
+2019-07-02 15:08:38,919 INFO      Trying Action ID: 1, "allocation": No description given
+2019-07-02 15:08:38,935 INFO      Updating 2 selected indices: [u'tuto-2019-06-30', u'tuto-2019-07-01']
+2019-07-02 15:08:38,935 INFO      Updating index setting {'index.routing.allocation.require.box_type': 'warm'}
+2019-07-02 15:08:38,949 INFO      Action ID: 1, "allocation" completed.
+2019-07-02 15:08:38,949 INFO      Job completed.

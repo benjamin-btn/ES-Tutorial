@@ -9,7 +9,7 @@ actions: # https://www.elastic.co/guide/en/elasticsearch/client/curator/5.6/inde
     filters:
     - filtertype: pattern # https://www.elastic.co/guide/en/elasticsearch/client/curator/5.6/filtertype_pattern.html
       kind: prefix
-      value: '^[a-z].*-'
+      value: '^[a-z].*'
       exclude:
     - filtertype: age # https://www.elastic.co/guide/en/elasticsearch/client/curator/5.6/filtertype_age.html
       source: creation_date

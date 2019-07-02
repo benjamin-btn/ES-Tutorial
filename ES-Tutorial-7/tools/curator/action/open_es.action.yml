@@ -1,8 +1,7 @@
 actions:
   1:
-    action: close
+    action: open
     options:
-      delete_aliases: False
       disable_action: False
     filters:
     - filtertype: pattern
