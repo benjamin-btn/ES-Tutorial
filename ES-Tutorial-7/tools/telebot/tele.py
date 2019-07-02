@@ -6,7 +6,7 @@ import urllib3
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler  # import modules
 import esbot
 
-my_token = ''
+my_token = 'your bot api key'
 print('start telegram chat bot')
 
 def es_command(bot, update) :

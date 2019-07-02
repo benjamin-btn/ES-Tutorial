@@ -1,4 +1,17 @@
 #[master-node]
 #[data-node]
-[all-node]
+#[all-node:vars]
+#ansible_ssh_private_key_file=./ES-Key-7th.pem
+#ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+#[all-node]
+#172.31.9.72
+#172.31.2.230
+#172.31.7.163
+
+[rolling-node:vars]
+ansible_ssh_private_key_file=./ES-Key-7th.pem
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 [rolling-node]
+172.31.9.72
+172.31.2.230
+172.31.7.163

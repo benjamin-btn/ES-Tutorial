@@ -15,12 +15,6 @@ curl -XPOST 'localhost:9200/_flush/synced?pretty'
 ## end
 
 sudo service elasticsearch restart
-#systemctl stop elasticsearch
-
-#rpm -U /usr/local/src/elasticsearch-5.6.1.rpm
-#yum update -y java
-
-#systemctl start elasticsearch
 
 while true; do
   cluster_health=`curl -s http://localhost:9200/_cat/nodes | grep -ic $hostname`

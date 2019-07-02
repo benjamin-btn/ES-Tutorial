@@ -45,11 +45,12 @@
   when: elasticsearch_checker.stdout == "0"
   become: yes
 
-#- name: copy override config file
-#  template:
-#    src: override.conf.j2
-#    dest: /etc/systemd/system/elasticsearch.service.d/override.conf
-#  when: elasticsearch_checker.stdout == "0"
+- name: copy override config file
+  template:
+    src: override.conf.j2
+    dest: /etc/systemd/system/elasticsearch.service.d/override.conf
+  when: elasticsearch_checker.stdout == "0"
+  become: yes
 
 - name: create a symlink elasticsearch config
   file:

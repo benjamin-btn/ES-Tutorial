@@ -11,14 +11,17 @@ def es(cmd):
         data = {}
         if cmd[1] == "i":
             rtn = es_rtn('GET', "localhost:9200", data, header)
+        elif cmd[1] == "h":
+            rtn = es_rtn('GET', "localhost:9200" + "/_cat/health", data, header)
         else:
             rtn = "incorrect commands"
         print rtn
         return rtn
 
     except IndexError:
-        rtn = "Usage : ./esbot [options] [Cluster URL]\n\n\
+        rtn = "Usage : ./esbot [options] \n\n\
         i : ES Info\n\
+        h : ES Health\n\
         "
         print rtn
         return rtn
