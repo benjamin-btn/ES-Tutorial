@@ -18,13 +18,13 @@ def es(cmd):
         elif cmd[1] == "m":
             rtn = es_rtn('GET', "localhost:9200" + "/_cat/master?v", data, header)
         elif cmd[1] == "idx":
-            rtn = es_rtn('GET', "localhost:9200" + "/_cat/indices?V", data, header)
+            rtn = es_rtn('GET', "localhost:9200" + "/_cat/indices?v", data, header)
         elif cmd[1] == "re":
-            data = { "transient" : { "cluster.routing.allocation.enable" : "new_primaries" } }
-            rtn = es_rtn('PUT', "localhost:9200" + "/_cluster/settings", data, header)
+            data = '{ "transient" : { "cluster.routing.allocation.enable" : "new_primaries" } }'
+            rtn = es_rtn('PUT', "localhost:9200" + "/_cluster/settings", json.loads(data), header)
         elif cmd[1] == "rd":
-            data = { "transient" : { "cluster.routing.allocation.enable" : null } }
-            rtn = es_rtn('PUT', "localhost:9200" + "/_cluster/settings", data, header)
+            data = '{ "transient" : { "cluster.routing.allocation.enable" : null } }'
+            rtn = es_rtn('PUT', "localhost:9200" + "/_cluster/settings", json.loads(data), header)
         elif cmd[1] == "ex":
             rtn = es_rtn('POST', "localhost:9200" + "/_cluster/allocation/explain", data, header)
         elif cmd[1] == "f":
